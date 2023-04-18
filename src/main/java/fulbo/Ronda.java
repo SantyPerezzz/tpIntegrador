@@ -6,8 +6,8 @@ public class Ronda {
 	private String nro;
 	private ArrayList<Partido> partidos;
 
-	public Ronda() {
-		this.nro = "";
+	public Ronda(String nro) {
+		this.nro = nro;
 		this.partidos = new ArrayList<>();
 	}
 
@@ -33,4 +33,7 @@ public class Ronda {
 		this.partidos = partidos;
 	}
 
+	public void agregarPartido(Partido part) {
+		partidos.add(part);
+	}
 }

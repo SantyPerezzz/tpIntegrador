@@ -1,5 +1,7 @@
 package tpIntegrador;
 
+import fulbo.*;
+import programa.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -7,8 +9,8 @@ import org.junit.jupiter.api.Test;
 class Tests {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void puntajeEnDosRondasConsecutivasTest() {
+		
 	}
 
 }
