@@ -32,11 +32,22 @@ public class Main {
 		return pos;
 	}
 	
+	public static int posParticipante(ArrayList<Participante> participantes,String nombre) {
+		int pos=-1;
+		for(Participante part:participantes) {
+			if(part.getNombre().equals(nombre)) {
+				pos=participantes.indexOf(part);
+			}
+		}
+		
+		return pos;
+	}
+	
 	public static Resultado resEquipo1(String linea[]) {
 		Resultado res=Resultado.perdio;
-		if(linea[1]=="X") {
+		if(linea[2].equals("X")) {
 			res= Resultado.gano;
-		}else if(linea[2]=="X") {
+		}else if(linea[3].equals("X")) {
 			res= Resultado.empato;
 		}
 		
@@ -44,18 +55,20 @@ public class Main {
 	}
 
     public static void main(String[] args) {
-        Path resultadosPath = Path.of("D:\\ProgramFilesx86\\workspace\\tpIntegradorFtFer\\src\\main\\java\\programa\\resultados");
-        Path pronosticoPath = Path.of("D:\\ProgramFilesx86\\workspace\\tpIntegradorFtFer\\src\\main\\java\\programa\\pronostico.txt");
+        Path resultadosPath = Path.of("D:\\ProgramFilesx86\\workspace\\tpIntegrador\\src\\main\\java\\programa\\resultados");
+        Path pronosticoPath = Path.of("D:\\ProgramFilesx86\\workspace\\tpIntegrador\\src\\main\\java\\programa\\pronostico.txt");
 
         ArrayList<Partido> partidos = new ArrayList<Partido>();
-        ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
         ArrayList<Equipo> equipos= new ArrayList<Equipo>();
+        ArrayList<Participante> participantes= new ArrayList<Participante>();
+        
+        ArrayList<Pronostico> pronosticos= new ArrayList<Pronostico>();
         
         try {
             for (String linea : Files.readAllLines(resultadosPath)) {
-            	String nomEq1=linea.split(",")[0];
-            	String nomEq2=linea.split(",")[3];
-            	Equipo aux1 = new Equipo(linea.split(",")[0], "");
+            	String nomEq1=linea.split(",")[1];
+            	String nomEq2=linea.split(",")[4];
+            	Equipo aux1 = new Equipo(nomEq1, "");
                 if(posEquipo(equipos, nomEq1)!=-1) {
                 	aux1 = equipos.get(posEquipo(equipos,nomEq1));	
                 }else {
@@ -68,34 +81,35 @@ public class Main {
                 	equipos.add(aux2);
                 }
                 
-                partidos.add(new Partido(aux1, aux2, Integer.parseInt(linea.split(",")[1]),Integer.parseInt(linea.split(",")[2])));
+                partidos.add(new Partido(aux1, aux2, Integer.parseInt(linea.split(",")[2]),Integer.parseInt(linea.split(",")[3])));
             }
             for(String linea: Files.readAllLines(pronosticoPath)) {
-            	String nomEq1= linea.split(",")[0];
-            	String nomEq2= linea.split(",")[4];
-            	Equipo eqAux1= new Equipo();
-            	Equipo eqAux2=new Equipo();
+            	String nomPart= linea.split(",")[0];
+            	Participante auxPart= new Participante(nomPart);
+            	if(posParticipante(participantes,nomPart)!=-1) {
+            		auxPart=participantes.get(posParticipante(participantes, nomPart));
+            	}else {
+            		participantes.add(auxPart);
+            	}
             	
-            	if(posEquipo(equipos,nomEq1)!=-1) {
-            		eqAux1= equipos.get(posEquipo(equipos, nomEq1));	
-            	}
-            	if(posEquipo(equipos,nomEq2)!=-1) {
-            		eqAux2= equipos.get(posEquipo(equipos,nomEq2));
-            	}
+            	String nomEq1= linea.split(",")[1];
+            	String nomEq2= linea.split(",")[5];
+            	Equipo eqAux1= equipos.get(posEquipo(equipos, nomEq1));
+            	Equipo eqAux2= equipos.get(posEquipo(equipos,nomEq2));
             	
             	Pronostico aux = new Pronostico(buscarPartido(partidos,eqAux1,eqAux2),eqAux1,resEquipo1(linea.split(",")));
+            	
+            	auxPart.agregarPronostico(aux);
             	
             	pronosticos.add(aux);
             }
         } catch (IOException e) {
-            System.err.println(e);
+            System.out.println(e);
         }
-        int contPuntos=0;
-        for(Pronostico p: pronosticos) {
-        	contPuntos+=p.puntos();
-        }
-        System.out.println("Puntaje= "+contPuntos);
-        
        
+        for(Participante p: participantes) {
+        	System.out.println(p.getNombre()+" tiene "+p.puntosTotales()+" puntos");
+        }
+        
     }
 }
