@@ -19,14 +19,13 @@ public class Main {
         ArrayList<Equipo> equipos= new ArrayList<Equipo>();
         ArrayList<Participante> participantes= new ArrayList<Participante>();
         
-        ArrayList<Pronostico> pronosticos= new ArrayList<Pronostico>();
-        
+       
         Funciones.leerArchivoResultados(resultadosPath,rondas,partidos,equipos);
         Funciones.leerArchivoPronosticos(pronosticoPath,participantes,equipos,partidos);
         
        
         for(Participante p: participantes) {
-        	System.out.println(p.getNombre()+" tiene "+p.puntosTotales()+" puntos, y acerto "+p.pronosticosAcertados().size()+" pronosticos");
+        	Funciones.mostrarParticipante(p);
         }
         
        /* for(Partido p:partidos) {

@@ -131,4 +131,8 @@ public class Funciones {
 		}
 		
 	}
+	
+	public static void mostrarParticipante(Participante p) {
+		System.out.println("Participante: "+p.getNombre()+"\t"+"Puntos: "+p.puntosTotales()+"\t"+"Pronosticos acertados: "+p.pronosticosAcertados().size());
+	}
 }
