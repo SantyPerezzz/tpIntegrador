@@ -3,8 +3,6 @@ package programa;
 import fulbo.*;
 import fulbo.Partido.Resultado;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
@@ -32,8 +30,12 @@ public class Main {
         	System.out.println(p.getEquipo1().getNombre()+" vs "+p.getEquipo2().getNombre());
         }*/
         
-        for(Ronda r: rondas) {
+        /*for(Ronda r: rondas) {
         	System.out.println(r.getNro()+" "+Funciones.stringVs(r.getPartidos()));
+        }*/
+        
+        for(Partido p:partidos) {
+        	System.out.println("Ronda: "+p.getNroRonda()+"\t"+p.getEquipo1().getNombre()+" vs "+p.getEquipo2().getNombre());
         }
     }
 }

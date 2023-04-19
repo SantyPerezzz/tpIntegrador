@@ -72,35 +72,51 @@ public class Funciones {
 		return partidosString;
 	}
 	
+	public static boolean verificarLineaResultado(String linea) {
+		boolean b=false;
+		String[] lineaSpliteada= linea.split(",");
+		if(lineaSpliteada.length==5) {
+			if(Integer.parseInt(lineaSpliteada[2])>=0) {
+				if(Integer.parseInt(lineaSpliteada[3])>=0) {
+					b=true;
+				}
+			}
+		}
+		
+		return b;
+	}
+	
 	public static void leerArchivoResultados(Path resultadosPath,ArrayList<Ronda> rondas,ArrayList<Partido> partidos,ArrayList<Equipo> equipos) {
 		try {
 			for (String linea : Files.readAllLines(resultadosPath)) {
-	        	String nroRonda= linea.split(",")[0];
-	        	Ronda auxRonda= new Ronda(nroRonda);
-	        	if(posRonda(rondas,nroRonda)!=-1) {
-	        		auxRonda=rondas.get(posRonda(rondas,nroRonda));
-	        	}else {
-	        		rondas.add(auxRonda);
-	        	}
-	        	
-	        	String nomEq1=linea.split(",")[1];
-	        	String nomEq2=linea.split(",")[4];
-	        	Equipo aux1 = new Equipo(nomEq1, "");
-	            if(posEquipo(equipos, nomEq1)!=-1) {
-	            	aux1 = equipos.get(posEquipo(equipos,nomEq1));	
-	            }else {
-	            	equipos.add(aux1);
-	            }
-	            Equipo aux2 = new Equipo(nomEq2, "");
-	            if(posEquipo(equipos,nomEq2)!=-1) {
-	            	aux2= equipos.get(posEquipo(equipos,nomEq2));
-	            }else {
-	            	equipos.add(aux2);
-	            }
-	            Partido auxPart= new Partido(aux1, aux2, Integer.parseInt(linea.split(",")[2]),Integer.parseInt(linea.split(",")[3]));
-	            partidos.add(auxPart);
-	            auxRonda.agregarPartido(auxPart);
-	        }
+				if(verificarLineaResultado(linea)) {
+		        	String nroRonda= linea.split(",")[0];
+		        	Ronda auxRonda= new Ronda(nroRonda);
+		        	if(posRonda(rondas,nroRonda)!=-1) {
+		        		auxRonda=rondas.get(posRonda(rondas,nroRonda));
+		        	}else {
+		        		rondas.add(auxRonda);
+		        	}
+		        	
+		        	String nomEq1=linea.split(",")[1];
+		        	String nomEq2=linea.split(",")[4];
+		        	Equipo aux1 = new Equipo(nomEq1, "");
+		            if(posEquipo(equipos, nomEq1)!=-1) {
+		            	aux1 = equipos.get(posEquipo(equipos,nomEq1));	
+		            }else {
+		            	equipos.add(aux1);
+		            }
+		            Equipo aux2 = new Equipo(nomEq2, "");
+		            if(posEquipo(equipos,nomEq2)!=-1) {
+		            	aux2= equipos.get(posEquipo(equipos,nomEq2));
+		            }else {
+		            	equipos.add(aux2);
+		            }
+		            Partido auxPart= new Partido(nroRonda,aux1, aux2, Integer.parseInt(linea.split(",")[2]),Integer.parseInt(linea.split(",")[3]));
+		            partidos.add(auxPart);
+		            auxRonda.agregarPartido(auxPart);
+		        }
+			}
 		}catch(Exception e) {
 			System.out.println(e);
 		}

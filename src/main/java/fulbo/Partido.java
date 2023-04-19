@@ -4,25 +4,36 @@ public class Partido {
 	
 	public enum Resultado{gano,perdio,empato}
 	
+	private String nroRonda;
 	private Equipo equipo1;
 	private Equipo equipo2;
 	private int golesEquipo1;
 	private int golesEquipo2;
 	
 	public Partido() {
+		this.nroRonda="0";
 		this.equipo1=new Equipo();
 		this.equipo2=new Equipo();
 		this.golesEquipo1=0;
 		this.golesEquipo2=0;
 	}
 
-	public Partido(Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
+	public Partido(String nroRonda,Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
+		this.nroRonda=nroRonda;
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
 		this.golesEquipo1 = golesEquipo1;
 		this.golesEquipo2 = golesEquipo2;
 	}
 
+	public String getNroRonda() {
+		return nroRonda;
+	}
+	
+	public void setNroRonda(String nroRonda) {
+		this.nroRonda=nroRonda;
+	}
+	
 	public Equipo getEquipo1() {
 		return equipo1;
 	}
