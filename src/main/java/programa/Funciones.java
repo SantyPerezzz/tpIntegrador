@@ -148,6 +148,26 @@ public class Funciones {
 		
 	}
 	
+	public static boolean nombreADefinir(ArrayList<Ronda> rondas,Participante part, String nroRonda) {
+		boolean r=true;
+		Ronda auxRonda= new Ronda("0");
+		for(Ronda ron:rondas) {
+			if(ron.getNro().equals(nroRonda)) {
+				auxRonda=ron;
+			}
+		}
+		
+		return r;
+	}
+	
+	public static boolean acertoPronosticosDeRonda(Participante part,Ronda ronda) {
+		boolean r=false;
+		
+		
+		
+		return r;
+	}
+	
 	public static void mostrarParticipante(Participante p) {
 		System.out.println("Participante: "+p.getNombre()+"\t"+"Puntos: "+p.puntosTotales()+"\t"+"Pronosticos acertados: "+p.pronosticosAcertados().size());
 	}
