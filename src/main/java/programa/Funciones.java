@@ -112,7 +112,7 @@ public class Funciones {
 		            }else {
 		            	equipos.add(aux2);
 		            }
-		            Partido auxPart= new Partido(nroRonda,aux1, aux2, Integer.parseInt(linea.split(",")[2]),Integer.parseInt(linea.split(",")[3]));
+		            Partido auxPart= new Partido(aux1, aux2, Integer.parseInt(linea.split(",")[2]),Integer.parseInt(linea.split(",")[3]));
 		            partidos.add(auxPart);
 		            auxRonda.agregarPartido(auxPart);
 		        }

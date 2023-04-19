@@ -1,6 +1,7 @@
 package tpIntegrador;
 
 import fulbo.*;
+import fulbo.Partido.Resultado;
 import programa.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,9 +33,21 @@ class Tests {
 	
 	@Test
 	void puntajeEnDosRondasConsecutivas() {
+		Participante pepe=new Participante("Pepe");
 		
+		Ronda r1=new Ronda("1");
+		Ronda r2=new Ronda("2");
+		Equipo boca=new Equipo("Boca","bokabokabokaaaa");
+		Equipo river=new Equipo("River","gallinita");
+		Partido p1= new Partido(boca,river,1,2);
+		Partido p2= new Partido(boca,river,4,2);
+		r1.agregarPartido(p1);
+		r2.agregarPartido(p2);
 		
+		pepe.agregarPronostico(new Pronostico(p1,boca,Resultado.perdio));
+		pepe.agregarPronostico(new Pronostico(p2,boca,Resultado.gano));
 		
+		assertEquals(2,pepe.puntosTotales());
 	}
 
 }
