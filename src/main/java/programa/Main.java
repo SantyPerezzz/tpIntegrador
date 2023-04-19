@@ -34,8 +34,8 @@ public class Main {
         	System.out.println(r.getNro()+" "+Funciones.stringVs(r.getPartidos()));
         }*/
         
-        for(Partido p:partidos) {
+        /*for(Partido p:partidos) {
         	System.out.println("Ronda: "+p.getNroRonda()+"\t"+p.getEquipo1().getNombre()+" vs "+p.getEquipo2().getNombre());
-        }
+        }*/
     }
 }

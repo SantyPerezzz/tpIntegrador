@@ -2,9 +2,23 @@ Mariana,Argentina,X, , ,Arabia Saudita
 Mariana,Polonia, ,X, ,Mexico
 Mariana,Argentina,X, , ,Mexico
 Mariana,Arabia Saudita, , ,X,Polonia
+Mariana,Argentina, ,X, ,Polonia
+Mariana,Arabia Saudita,X, , ,Mexico
 Mariana,Espana,X, , ,Costa Rica
+Mariana,Alemania, , ,X,Japon
+Mariana,Japon, , ,X,Costa Rica
+Mariana,Espana, ,X, ,Alemania
+Mariana,Japon,X, , ,Espana
+Mariana,Costa Rica, , ,X,Alemania
 Pedro,Argentina,X, , ,Arabia Saudita
 Pedro,Polonia, , ,X,Mexico
 Pedro,Argentina,X, , ,Mexico
 Pedro,Arabia Saudita, , ,X,Polonia
+Pedro,Argentina, , ,X,Polonia
+Pedro,Arabia Saudita,X, , ,Mexico
 Pedro,Espana, ,X, ,Costa Rica
+Pedro,Alemania, ,X, ,Japon
+Pedro,Japon, , ,X,Costa Rica
+Pedro,Espana, ,X, ,Alemania
+Pedro,Japon, , ,X,Espana
+Pedro,Costa Rica, , ,X,Alemania

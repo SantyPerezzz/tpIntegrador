@@ -148,6 +148,26 @@ public class Funciones {
 		
 	}
 	
+	
+	public static boolean acertoPronosticosDeRonda(Participante part,Ronda ronda) {
+		boolean r=true;
+		ArrayList<Partido> partidosAcertados= new ArrayList<Partido>();
+		for(Pronostico p:part.pronosticosAcertados()) {
+			partidosAcertados.add(p.getPartido());
+		}
+		for(Partido p:ronda.getPartidos()) {
+			if(!partidosAcertados.contains(p)) {
+				r=false;
+			}
+		}
+		
+		return r;
+	}
+	
+	public static void mostrarParticipante(Participante p) {
+		System.out.println("Participante: "+p.getNombre()+"\t"+"Puntos: "+p.puntosTotales()+"\t"+"Pronosticos acertados: "+p.pronosticosAcertados().size());
+	}
+
 	public static boolean nombreADefinir(ArrayList<Ronda> rondas,Participante part, String nroRonda) {
 		boolean r=true;
 		Ronda auxRonda= new Ronda("0");
@@ -158,17 +178,5 @@ public class Funciones {
 		}
 		
 		return r;
-	}
-	
-	public static boolean acertoPronosticosDeRonda(Participante part,Ronda ronda) {
-		boolean r=false;
-		
-		
-		
-		return r;
-	}
-	
-	public static void mostrarParticipante(Participante p) {
-		System.out.println("Participante: "+p.getNombre()+"\t"+"Puntos: "+p.puntosTotales()+"\t"+"Pronosticos acertados: "+p.pronosticosAcertados().size());
 	}
 }
