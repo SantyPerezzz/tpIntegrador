@@ -168,7 +168,7 @@ public class Funciones {
 		System.out.println("Participante: "+p.getNombre()+"\t"+"Puntos: "+p.puntosTotales()+"\t"+"Pronosticos acertados: "+p.pronosticosAcertados().size());
 	}
 
-	public static boolean nombreADefinir(ArrayList<Ronda> rondas,Participante part, String nroRonda) {
+	/*public static boolean nombreADefinir(ArrayList<Ronda> rondas,Participante part, String nroRonda) {
 		boolean r=true;
 		Ronda auxRonda= new Ronda("0");
 		for(Ronda ron:rondas) {
@@ -178,5 +178,5 @@ public class Funciones {
 		}
 		
 		return r;
-	}
+	}*/
 }

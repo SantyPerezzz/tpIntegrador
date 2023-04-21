@@ -1,8 +1,6 @@
 package programa;
 
 import fulbo.*;
-import fulbo.Partido.Resultado;
-
 import java.nio.file.Path;
 import java.util.ArrayList;
 
